@@ -1,0 +1,6 @@
+nmu_common_code.admin_config_common_code:
+  title: 'NMU Common Code'
+  route_name: nmu_common_code.admin_config_common_code
+  parent: system.admin_config
+  description: 'Manage common code configuration.'
+  weight: 6

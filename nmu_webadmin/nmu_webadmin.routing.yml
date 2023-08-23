@@ -1,0 +1,19 @@
+nmu_webadmin.main:
+  path: '/admin/nmu_webadmin/main'
+  defaults:
+    _controller: '\Drupal\nmu_webadmin\Controller\WebAdmin_Controller::WebAdmin_Main'
+    _title: 'Web Administration Home'
+  requirements:
+    _permission: 'access administration pages'
+
+nmu_webadmin.ajax:
+  path: '/admin/nmu_webadmin/main/ajax'
+  defaults:
+    _controller: '\Drupal\nmu_webadmin\Controller\WebAdmin_Controller::WebAdmin_Ajax'
+    _title: 'none'
+  requirements:
+    _permission: 'access administration pages'
+
+
+
+

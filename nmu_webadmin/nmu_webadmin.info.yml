@@ -1,0 +1,8 @@
+name: Web Administration Application  
+type: module  
+description: A group of modules used to extend NMU's web system functionalities  
+core: 8.x  
+package: Custom NMU
+
+dependencies:
+  - nmu_common_code:nmu_common_code

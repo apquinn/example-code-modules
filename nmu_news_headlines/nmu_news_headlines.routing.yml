@@ -1,0 +1,19 @@
+nmu_news_headlines.archives:
+  path: '/news_archives/{year}'
+  defaults:
+    _controller: '\Drupal\nmu_news_headlines\Controller\NMUNewsArchives::Headlines'
+    _title: 'News Archives'
+  requirements:
+    _permission: 'access content'
+    year: '\d\d\d\d'
+
+nmu_news_headlines.story:
+  path: '/news_archives/{year}/{id}'
+  defaults:
+    _controller: '\Drupal\nmu_news_headlines\Controller\NMUNewsArchives::Story'
+    _title: 'News Archives Story'
+  requirements:
+    _permission: 'access content'
+    year: '\d\d\d\d'
+    id: '\d+'
+

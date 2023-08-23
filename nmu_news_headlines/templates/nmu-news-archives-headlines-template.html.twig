@@ -1,0 +1,49 @@
+<div class="one-col-card">
+  <div class="card nmu-card">
+    <div class="card-body">
+
+      {% if debug is not empty %}
+        <div class="nmu-debug__wrapper">
+          {% for value in debug %}
+            {{ value }}<br>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <aside class="news-archive__note">
+        As of February, 2019 all new press releases are being posted exclusively on <a href="https://news.nmu.edu">Northern Today</a>.
+        This collection of press releases is being kept for archival purposes only.
+      </aside>
+
+      <nav class="news-archive__year-list">
+        <a href="/mc/news_archives/2018">2018</a>
+        <a href="/mc/news_archives/2017">2017</a>
+        <a href="/mc/news_archives/2016">2016</a>
+        <a href="/mc/news_archives/2015">2015</a>
+        <a href="/mc/news_archives/2014">2014</a>
+        <a href="/mc/news_archives/2013">2013</a>
+        <a href="/mc/news_archives/2012">2012</a>
+        <a href="/mc/news_archives/2011">2011</a>
+        <a href="/mc/news_archives/2010">2010</a>
+        <a href="/mc/news_archives/2009">2009</a>
+      </nav>
+
+      <section>
+      {% for value in headlines %}
+        <div class="news-archive__entry">
+          <header>
+            <div class="news-archive__headline">
+              <a href="{{ value.link }}">{{ value.title }}</a>
+            </div>
+            <div class="news-archive__date">
+              {{ value.date }}
+            </div>
+          </header>
+          <p>{{ value.blurb|striptags|raw }}</p> {# pull out html first with |striptags, then render the speical encoded characters with |raw #}
+        </div>
+      {% endfor %}
+      </section>
+
+    </div>
+  </div>
+</div>

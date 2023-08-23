@@ -1,0 +1,8 @@
+name: NMU Common Code
+description: A module to handle all of the services that are common to many of NMU's custom modules
+package: Custom NMU
+
+type: module
+core: 8.x
+
+php: 7.2

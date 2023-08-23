@@ -1,0 +1,48 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aquinn
+ * Date: 1/31/20
+ * Time: 9:47 AM
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function nmu_news_headlines_theme($existing, $type, $theme, $path) {
+	return [
+		'nmu_news_headlines_template' => [
+			'variables' => [
+				'stories' => [],
+				'debug' => [],
+			],
+		],
+		'nmu_news_archives_headlines_template' => [
+			'variables' => [
+				'headlines' => [],
+				'debug' => [],
+			],
+		],
+		'nmu_news_archives_story_template' => [
+			'variables' => [
+				'story' => [],
+				'debug' => [],
+			],
+		],
+		'nmu_news_archives_image_template' => [
+			'variables' => [
+				'image' => [],
+				'debug' => [],
+			],
+		],
+	];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function nmu_news_headlines_preprocess_block(&$variables) {
+  if( \Drupal::routeMatch()->getRouteName() == 'nmu_news_headlines.archives' ) {
+    $variables['the_page_title_module'] = "NMU News Archives";
+  }
+}

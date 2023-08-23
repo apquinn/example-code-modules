@@ -1,0 +1,26 @@
+{{ attach_library('nmu_webadmin/nmu_webadmin_libraries') }}
+
+<form class="nmu-webadmin-form">
+	{{ form.form_build_id }}
+	{{ form.form_token }}
+	{{ form.form_id }}
+
+	<div id="nav">
+		<div id="nav-comp">{{ form.webadmin_only.compSelect }}</div>
+		<div id="nav-sub">{{ form.webadmin_only.navSelect }}</div>
+	</div>
+
+	<div id="component" style="border:1px solid red; padding:10px">
+		<div id="component-body">
+			{% if form['#webadmin_component_template'] is not empty %}
+				{% include form['#webadmin_component_template'] %}
+			{% endif %}
+
+			{% if form['#webadmin_component_js'] is not empty %}
+				{{ attach_library(form["#webadmin_component_js"]) }}
+			{% endif %}
+		</div>
+	</div>
+
+</form>
+

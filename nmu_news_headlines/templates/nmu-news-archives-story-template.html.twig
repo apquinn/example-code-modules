@@ -1,0 +1,73 @@
+<div class="one-col-card">
+  <div class="card nmu-card">
+    <div class="card-body">
+
+      {% if debug is not empty %}
+        <div class="nmu-debug__wrapper">
+          {% for value in debug %}
+            {{ value }}<br>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <nav class="news-archive__year-list">
+        <a href="/mc/news_archives/2018">2018</a>
+        <a href="/mc/news_archives/2017">2017</a>
+        <a href="/mc/news_archives/2016">2016</a>
+        <a href="/mc/news_archives/2015">2015</a>
+        <a href="/mc/news_archives/2014">2014</a>
+        <a href="/mc/news_archives/2013">2013</a>
+        <a href="/mc/news_archives/2012">2012</a>
+        <a href="/mc/news_archives/2011">2011</a>
+        <a href="/mc/news_archives/2010">2010</a>
+        <a href="/mc/news_archives/2009">2009</a>
+      </nav>
+
+      <article class="news-archive__article">
+        <header>
+          <h2 class="h3">
+            {{ story.title }}
+          </h2>
+          <div class="news-archive__date">
+            {{ story.date }}
+          </div>
+        </header>
+
+        <div class="news-archive__story">
+          {{ story.content|raw }}
+        </div>
+
+        <footer class="news-archive__byline">
+          {{ story.author }}<br>
+          {{ story.authorPhone }}<br>
+          {{ story.authorEmail }}<br>
+          {{ story.authorTitle }}
+        </footer>
+
+        {% if story.images is not empty %}
+          <div class="news-archives__media">
+            {% for image in story.images %}
+            <div class="news-archives__image">
+              <img src="//nmu.edu/Webb/NewsCenter/Images/Large/{{ image.filename }}"><br>
+              <div class="news-archives__image-title">
+                {{ image.title }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </article>
+
+      <a href="{{ story.back }}">
+        {% embed "@patterns/01-molecules/00-buttons/01-gold-hc-button.twig" %}
+          {% block button_content %}
+            Return to Stories
+          {% endblock %}
+        {% endembed %}
+      </a>
+
+
+    </div>
+  </div>
+</div>

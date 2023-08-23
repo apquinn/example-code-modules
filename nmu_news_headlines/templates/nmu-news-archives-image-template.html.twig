@@ -1,0 +1,14 @@
+{% if debug is not empty %}
+  <div class="nmu-debug__wrapper">
+    {% for value in debug %}
+      {{ value }}<br>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<div class="news-archives__images">
+    <img src="//nmu.edu/Webb/NewsCenter/Images/Large/{{ image.filename }}"><br>
+    <div class="news-archives__image-title">
+      {{ image.title }}
+    </div>
+</div>

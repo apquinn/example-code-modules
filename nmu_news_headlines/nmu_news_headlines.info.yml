@@ -1,0 +1,9 @@
+name: NMU News Headlines
+type: module
+description: 'This produces the NMU news headlines for home pages'
+package: Custom NMU
+version: '1.0'
+core: '8.x'
+php: '7.2'
+dependencies:
+- drupal:block

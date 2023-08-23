@@ -1,0 +1,39 @@
+{% if form['#webadmin_twig_action'] == '' %}
+	<div id="component-mgmt" style="border:1px solid green; padding:10px">
+		<div id="add-component-msg"></div>
+		<div id="component-add-link">{{ form.component_add }}</div>
+		{{ form.component_add_div }}
+		<div id="edit_fields" style="display:none">
+			{{ form.Title_Orig }}
+			{{ form.Title }}<span id="title-warning"></span>
+			{{ form.AccessType }}
+			{% for key,value in form %}
+				{% if key starts with 'SubNav-' %}
+					{{ value }}<span id="{{ key|lower }}-warning"></span>
+				{% endif %}
+			{% endfor %}
+
+			{{ form.savebutton }}
+			{{ form.cancelbutton }}
+		</div>
+
+		<div id="components" style="border:5px solid green; padding:10px">
+			{% for key,value in form.components %}
+				{% if key starts with 'component-' %}
+					{{ value.component_edit }}
+					{{ value.component_del }}
+					{{ value.component_del_confirm }}
+					{{ value.component_title }} 
+					{{ value.component_edit_div }} 
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+
+
+{% if form['#webadmin_twig_action'] == 'something' %}
+{% endif %}
+
+
+

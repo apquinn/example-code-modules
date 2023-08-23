@@ -1,0 +1,9 @@
+nmu_webadmin.comp_router:  
+  title: 'Web Administration'  
+  route_name: nmu_webadmin.main
+  description: 'Welcome to the Northern Michigan Web Administration application'
+  parent: system.admin  
+  weight: 6
+
+
+

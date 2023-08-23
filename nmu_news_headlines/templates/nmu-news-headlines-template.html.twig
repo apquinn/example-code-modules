@@ -1,0 +1,50 @@
+{% for value in debug %}
+		{{ value }}<br>
+{% endfor %}
+
+<div class="border-wrapper">
+  <div class="card-group">
+    {% for key,value in stories %}
+		<div class="card nmu-card event-card">
+			<div class="card-body">
+			  <div class="fc-responsive-header">
+				<div class="event-image">
+				  <picture class="card-img-top">
+					<!--[if IE 9]><video style="display: none;"><![endif]-->
+					<source srcset="{{ value.Image }} 1x" media="all and (min-width: 1100px)" type="image/jpeg" class="card-img-top">
+					<source srcset="{{ value.Image }} 1x" media="all and (min-width: 776px) and (max-width: 1099px)" type="image/jpeg" class="card-img-top">
+					<source srcset="{{ value.Image }} 1x" media="all and (min-width: 416px) and (max-width: 775px)" type="image/jpeg" class="card-img-top">
+					<source srcset="{{ value.Image }} 1x" type="image/jpeg" class="card-img-top">
+					<!--[if IE 9]></video><![endif]-->
+					<img src="{{ value.Image }}" alt="{{ value.ImageAlt }}" typeof="foaf:Image" class="card-img-top">
+				  </picture>
+				</div>
+				<div class="card-text" style="text-align:right; padding-bottom:5px; ">
+					<span class="heading__kicker" style="font-size:smaller; "></span>
+				</div>
+				<h3 class="card-title heading__inset">
+					<span class="heading__kicker">{{ value.Type }}</span><br>
+					{{ value.Title }}
+				</h3>
+			  </div>
+
+			  <div class="fc-responsive-text">
+				<div class="card-text">
+					<p>{{ value.Text | raw }}</p>
+				</div>
+
+				<button type="button" class="btn btn-nmu--gold btn-xl">
+				  {% block button_content %}
+					<a href="{{ value.Link }}">read more</a>
+				  {% endblock %}
+				</button>
+			  </div>
+			</div>
+		</div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+

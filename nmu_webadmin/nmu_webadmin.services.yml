@@ -1,0 +1,4 @@
+services:
+  nmu_webadmin.webadmin_service:
+    class: Drupal\nmu_webadmin\Service\WebAdmin_Service
+

@@ -1,0 +1,100 @@
+<?php
+
+function nmu_common_code_webform_options_starting_semester_alter(array &$options, array &$element) {
+  // Load cached options.
+  if ($cache = \Drupal::cache()->get('starting_semester')) {
+    $options = $cache->data;
+    return;
+  }
+
+  $year = date('Y');
+  for($i = 0; $i < 3; $i++) {
+    $j = $year + $i;
+    if ($year == $j) {
+      $month = date('n');
+      if ($month < 7) {
+        $options['Fall ' . $j] = 'Fall ' . $j;
+        $options['Winter ' . ($j+1)] = 'Winter ' . ($j+1);
+        $options['Summer ' . ($j+1)] = 'Summer ' . ($j+1);
+      } else {
+        $options['Fall ' . ($j+1)] = 'Fall ' . ($j+1);
+        $options['Winter ' . ($j+1)] = 'Winter ' . ($j+1);
+        $options['Summer ' . ($j+1)] = 'Summer ' . ($j+1);
+        $options['Winter ' . ($j+2)] = 'Winter ' . ($j+2);
+        $options['Summer ' . ($j+2)] = 'Summer ' . ($j+2);
+      }
+    } else {
+      $options['Fall ' . $j] = 'Fall ' . $j;
+      $options['Winter ' . ($j+1)] = 'Winter ' . ($j+1);
+      $options['Summer ' . ($j+1)] = 'Summer ' . ($j+1);
+    }
+  }
+
+  //Cache the options
+  \Drupal::cache()->set('starting_semester', $options);
+}
+
+function nmu_common_code_webform_options_semesters_last_five_years_alter(array &$options, array &$element) {
+  // Load cached options.
+  if ($cache = \Drupal::cache()->get('semesters_last_five_years')) {
+    $options = $cache->data;
+    return;
+  }
+  $intYears = 5;
+  $i = 0;
+  while ($i <= $intYears)
+  {
+    $year = date("Y") - $i;
+
+    if ($i == 0)
+    {
+      $thisMonth = date("n");
+
+      if ($thisMonth > 11)
+      {
+        $options['Fall '.$year] = 'Fall '.$year;;
+      }
+      if ($thisMonth > 7)
+      {
+        $options['Summer '.$year] = 'Summer '.$year;
+      }
+      if ($thisMonth > 4)
+      {
+        $options['Winter '.$year] = 'Winter '.$year;
+      }
+    }
+    else
+    {
+      $options['Fall '.$year] = 'Fall '.$year;
+      $options['Summer '.$year] = 'Summer '.$year;
+      $options['Winter '.$year] = 'Winter '.$year;
+    }
+    $i++;
+  }
+  //Cache the options
+  \Drupal::cache()->set('semesters_last_five_years', $options);
+}
+
+function nmu_common_code_webform_options_next_five_years_alter(array &$options, array &$element) {
+  // Load cached options.
+  if ($cache = \Drupal::cache()->get('next_five_years')) {
+    $options = $cache->data;
+    return;
+  }
+
+  $year = date('Y');
+  for ($i = 0; $i <= 5; $i++) {
+    $j = $year + $i;
+    if ($year == $j) {
+      $month = date('n');
+      if ($month < 7) {
+        $options[$j] = $j;
+      }
+    } else {
+      $options[$j] = $j;
+    }
+  }
+
+  //Cache the options
+  \Drupal::cache()->set('next_five_years', $options);
+}

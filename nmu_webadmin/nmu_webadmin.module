@@ -1,0 +1,35 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aquinn
+ * Date: 9/11/20
+ * Time: 9:47 AM
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function nmu_webadmin_theme($existing, $type, $theme, $path) 
+{
+	$files = scandir (DRUPAL_ROOT.'/'.$path.'/templates');
+
+	$templateDetails = [
+		'variables' => [
+			'action' => '',
+			'form' => [],
+		],
+	];
+
+	$templates = [];
+	foreach($files as $file) {
+		if(strstr($file, '.html.twig')) {
+			$templateName = str_replace('-', '_', str_replace('.html.twig', '', $file));
+			$templates[$templateName] = $templateDetails;
+		}
+	}
+
+	return $templates;
+}
+
+
+

@@ -1,0 +1,16 @@
+services:
+  database.www_webadmin:
+    class: Drupal\Core\Database\Connection
+    factory: 'Drupal\Core\Database\Database::getConnection'
+    arguments: ['default', 'www_webadmin']
+
+  database.www_charlie:
+    class: Drupal\Core\Database\Connection
+    factory: 'Drupal\Core\Database\Database::getConnection'
+    arguments: ['default', 'www_charlie']
+
+  nmu_common_code.admin:
+    class: Drupal\nmu_common_code\Service\Admin
+
+  nmu_common_code.session_mgmt:
+    class: Drupal\nmu_common_code\Service\SessionMgmt
